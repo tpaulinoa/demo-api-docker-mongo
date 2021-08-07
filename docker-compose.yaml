@@ -1,0 +1,17 @@
+version: "3.8"
+
+services:
+  demo-api:
+    build: .
+    image: mydemocloud-image
+    ports:
+      - 8081:8080
+    depends_on:
+      - demo-mongodb
+    environment:
+      SPRING_DATA_MONGODB_URI: mongodb://demo-mongodb:27017/demo
+
+  demo-mongodb:
+    image: mongo
+    ports:
+      - 27018:27017
